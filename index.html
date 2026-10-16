@@ -1,0 +1,1133 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080914">
+    <meta name="description" content="VELTRIX - اكتشف عالماً جديداً من الإبداع والتكنولوجيا.">
+    <title>VELTRIX | Beyond The Future</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap');
+
+        :root {
+            --bg: #080914;
+            --panel: #101222;
+            --purple: #8b5cf6;
+            --blue: #38bdf8;
+            --text: #f8fafc;
+            --muted: #9ca3af;
+            --border: rgba(255,255,255,.09);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button, input {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .background-glow {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse at 15% 20%, rgba(139,92,246,.15), transparent 38%),
+                radial-gradient(ellipse at 85% 35%, rgba(56,189,248,.10), transparent 35%),
+                radial-gradient(ellipse at 50% 100%, rgba(139,92,246,.08), transparent 45%);
+        }
+
+        .grid-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            opacity: .15;
+            background-image:
+                linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+            background-size: 45px 45px;
+            mask-image: linear-gradient(to bottom, black, transparent 85%);
+        }
+
+        .container {
+            width: min(1160px, 90%);
+            margin: auto;
+        }
+
+        /* NAVBAR */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(8,9,20,.78);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            min-height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .logo {
+            font-size: 29px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            direction: ltr;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            background: linear-gradient(90deg, var(--blue), var(--purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #c3c7d4;
+            font-size: 14px;
+            transition: .3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--blue);
+        }
+
+        .nav-action {
+            padding: 10px 20px;
+            border: 1px solid rgba(139,92,246,.6);
+            border-radius: 10px;
+            background: rgba(139,92,246,.12);
+            color: white;
+            transition: .3s;
+        }
+
+        .nav-action:hover {
+            background: var(--purple);
+            box-shadow: 0 0 25px rgba(139,92,246,.3);
+        }
+
+        .menu-toggle {
+            display: none;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            background: var(--panel);
+            color: white;
+            padding: 8px 12px;
+            font-size: 22px;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 660px;
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            align-items: center;
+            gap: 50px;
+            padding-top: 65px;
+            padding-bottom: 80px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 15px;
+            border: 1px solid rgba(56,189,248,.25);
+            border-radius: 30px;
+            color: #9bdfff;
+            background: rgba(56,189,248,.07);
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #4ade80;
+            border-radius: 50%;
+            box-shadow: 0 0 12px #4ade80;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            50% { opacity: .4; transform: scale(.8); }
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 76px);
+            line-height: 1.25;
+            font-weight: 900;
+            margin-bottom: 22px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #38bdf8, #a78bfa, #e879f9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200%;
+            animation: gradientMove 5s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            50% { background-position: 100%; }
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 16px;
+            line-height: 2.1;
+            max-width: 540px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 32px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 24px;
+            border-radius: 11px;
+            font-weight: 700;
+            border: 1px solid transparent;
+            transition: .3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(110deg, #7c3aed, #4f46e5);
+            color: white;
+            box-shadow: 0 8px 30px rgba(124,58,237,.23);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(124,58,237,.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,.035);
+            border-color: var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--blue);
+            transform: translateY(-4px);
+        }
+
+        /* HERO VISUAL */
+
+        .visual {
+            position: relative;
+            min-height: 420px;
+            display: grid;
+            place-items: center;
+        }
+
+        .orbital {
+            position: absolute;
+            width: 340px;
+            height: 340px;
+            border: 1px solid rgba(139,92,246,.35);
+            border-radius: 50%;
+            transform: rotate(-25deg) scaleY(.72);
+            animation: orbit 14s linear infinite;
+        }
+
+        .orbital::before {
+            content: "";
+            position: absolute;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: var(--blue);
+            top: 25px;
+            left: 60px;
+            box-shadow: 0 0 22px var(--blue);
+        }
+
+        .orbital.two {
+            width: 270px;
+            height: 390px;
+            border-color: rgba(56,189,248,.4);
+            transform: rotate(45deg) scaleY(.72);
+            animation-direction: reverse;
+            animation-duration: 18s;
+        }
+
+        .orbital.two::before {
+            background: #c084fc;
+            box-shadow: 0 0 22px #c084fc;
+            top: 70px;
+            left: 10px;
+        }
+
+        @keyframes orbit {
+            to { rotate: 360deg; }
+        }
+
+        .core {
+            width: 205px;
+            height: 205px;
+            display: grid;
+            place-items: center;
+            border-radius: 38px;
+            background: linear-gradient(145deg, rgba(139,92,246,.2), rgba(56,189,248,.07));
+            border: 1px solid rgba(255,255,255,.18);
+            box-shadow: 0 0 90px rgba(139,92,246,.2), inset 0 0 45px rgba(56,189,248,.08);
+            transform: rotate(-8deg);
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .core span {
+            font-size: 88px;
+            font-weight: 900;
+            transform: rotate(8deg);
+            background: linear-gradient(135deg, #fff, #8b5cf6, #38bdf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        @keyframes float {
+            50% { transform: translateY(-14px) rotate(0deg); }
+        }
+
+        .floating-card {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 13px 16px;
+            border-radius: 13px;
+            border: 1px solid var(--border);
+            background: rgba(16,18,34,.92);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 15px 45px rgba(0,0,0,.2);
+            font-size: 12px;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .floating-card strong {
+            display: block;
+            font-size: 14px;
+        }
+
+        .floating-card small {
+            color: var(--muted);
+        }
+
+        .floating-card .icon {
+            font-size: 25px;
+        }
+
+        .card-one { top: 60px; right: -5px; }
+        .card-two { bottom: 60px; left: -10px; animation-delay: 1.2s; }
+
+        /* SECTION COMMON */
+
+        section {
+            padding: 90px 0;
+        }
+
+        .section-heading {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 45px;
+        }
+
+        .eyebrow {
+            color: var(--blue);
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            direction: ltr;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(28px, 4vw, 43px);
+            margin-bottom: 14px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            line-height: 1.9;
+            font-size: 14px;
+        }
+
+        /* STATS */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 28px 15px;
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            background: rgba(255,255,255,.025);
+            transition: .3s;
+        }
+
+        .stat:hover {
+            border-color: rgba(139,92,246,.45);
+            transform: translateY(-5px);
+        }
+
+        .stat h3 {
+            font-size: 35px;
+            color: #c4b5fd;
+            direction: ltr;
+        }
+
+        .stat p {
+            margin-top: 5px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* FEATURES */
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .feature {
+            padding: 30px 25px;
+            background: linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.012));
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            transition: .35s;
+        }
+
+        .feature:hover {
+            transform: translateY(-7px);
+            border-color: rgba(56,189,248,.4);
+            box-shadow: 0 18px 45px rgba(0,0,0,.15);
+        }
+
+        .feature-icon {
+            display: grid;
+            place-items: center;
+            width: 55px;
+            height: 55px;
+            border-radius: 15px;
+            margin-bottom: 22px;
+            font-size: 26px;
+            background: linear-gradient(135deg, rgba(139,92,246,.22), rgba(56,189,248,.13));
+            border: 1px solid rgba(139,92,246,.2);
+        }
+
+        .feature h3 {
+            font-size: 19px;
+            margin-bottom: 12px;
+        }
+
+        .feature p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 2;
+        }
+
+        /* PROJECTS */
+
+        .projects-section {
+            background: linear-gradient(180deg, transparent, rgba(139,92,246,.035), transparent);
+        }
+
+        .project-tools {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 32px;
+        }
+
+        .search-box {
+            width: min(420px, 100%);
+            display: flex;
+            gap: 10px;
+            padding: 7px 13px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: rgba(255,255,255,.03);
+        }
+
+        .search-box span {
+            align-self: center;
+        }
+
+        .search-box input {
+            width: 100%;
+            color: white;
+            border: none;
+            outline: none;
+            background: transparent;
+            padding: 8px 0;
+        }
+
+        .search-box input::placeholder {
+            color: #747b8e;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .project {
+            overflow: hidden;
+            border-radius: 18px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            transition: .35s;
+        }
+
+        .project:hover {
+            transform: translateY(-7px);
+            border-color: rgba(139,92,246,.5);
+        }
+
+        .project-art {
+            height: 165px;
+            display: grid;
+            place-items: center;
+            font-size: 53px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle at center, rgba(139,92,246,.3), transparent 65%), #121326;
+        }
+
+        .project:nth-child(2) .project-art {
+            background: radial-gradient(circle at center, rgba(56,189,248,.25), transparent 65%), #101725;
+        }
+
+        .project:nth-child(3) .project-art {
+            background: radial-gradient(circle at center, rgba(232,121,249,.23), transparent 65%), #1b1021;
+        }
+
+        .project-art::after {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border: 1px solid rgba(255,255,255,.15);
+            border-radius: 50%;
+            animation: orbit 18s linear infinite;
+        }
+
+        .project-body {
+            padding: 22px;
+        }
+
+        .project-body h3 {
+            font-size: 19px;
+            margin-bottom: 9px;
+        }
+
+        .project-body p {
+            font-size: 13px;
+            line-height: 1.9;
+            color: var(--muted);
+            min-height: 50px;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 18px;
+            color: #a5b4fc;
+            font-size: 13px;
+            font-weight: 700;
+            background: none;
+            border: none;
+        }
+
+        .project-link:hover {
+            color: var(--blue);
+        }
+
+        /* CTA */
+
+        .cta {
+            padding: 48px 35px;
+            text-align: center;
+            border: 1px solid rgba(139,92,246,.3);
+            border-radius: 24px;
+            background:
+                radial-gradient(ellipse at top, rgba(139,92,246,.17), transparent 65%),
+                rgba(255,255,255,.02);
+        }
+
+        .cta h2 {
+            font-size: clamp(25px, 4vw, 39px);
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: var(--muted);
+            line-height: 2;
+            margin-bottom: 25px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            margin-top: 90px;
+            padding: 35px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-inner p {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            color: #a5aabd;
+            font-size: 13px;
+        }
+
+        .footer-links a:hover {
+            color: var(--blue);
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 200;
+            max-width: calc(100% - 50px);
+            padding: 15px 20px;
+            background: #17192b;
+            border: 1px solid rgba(56,189,248,.4);
+            border-radius: 12px;
+            box-shadow: 0 10px 35px rgba(0,0,0,.3);
+            opacity: 0;
+            transform: translateY(15px);
+            pointer-events: none;
+            transition: .3s;
+            font-size: 13px;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                gap: 15px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 15px;
+                padding-top: 70px;
+            }
+
+            .hero p {
+                margin: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .visual {
+                min-height: 380px;
+            }
+
+            .features, .projects {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-action {
+                display: none;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 78px;
+                right: 5%;
+                left: 5%;
+                padding: 20px;
+                background: #111326;
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 12px 5px;
+            }
+
+            .hero {
+                min-height: auto;
+                padding-top: 55px;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .visual {
+                min-height: 320px;
+            }
+
+            .orbital {
+                width: 260px;
+                height: 260px;
+            }
+
+            .orbital.two {
+                width: 210px;
+                height: 300px;
+            }
+
+            .core {
+                width: 155px;
+                height: 155px;
+                border-radius: 28px;
+            }
+
+            .core span {
+                font-size: 68px;
+            }
+
+            .floating-card {
+                padding: 9px 11px;
+            }
+
+            .card-one { right: 0; top: 25px; }
+            .card-two { left: 0; bottom: 30px; }
+
+            section {
+                padding: 65px 0;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .features, .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .cta {
+                padding: 35px 20px;
+            }
+
+            .footer-inner {
+                justify-content: center;
+                text-align: center;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-glow"></div>
+    <div class="grid-bg"></div>
+
+    <header>
+        <nav class="container">
+            <a class="logo" href="#home" aria-label="VELTRIX home">VEL<span>TRIX</span></a>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false">☰</button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#features">المميزات</a></li>
+                <li><a href="#projects">المشروعات</a></li>
+                <li><a href="#about">من نحن</a></li>
+            </ul>
+
+            <a class="nav-action" href="#projects">اكتشف VELTRIX ↗</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero container" id="home">
+            <div class="hero-content reveal">
+                <div class="badge">
+                    <span class="status-dot"></span>
+                    عالم جديد من الإبداع والتكنولوجيا
+                </div>
+
+                <h1>
+                    فكّر بشكل<br>
+                    <span class="gradient-text">خارج الحدود.</span>
+                </h1>
+
+                <p>
+                    أهلاً بك في VELTRIX، حيث تلتقي التكنولوجيا بالإبداع.
+                    اكتشف أفكاراً جديدة، واستكشف مشروعات مبتكرة،
+                    وابدأ رحلتك نحو المستقبل.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">استكشف عالمنا <span>↙</span></a>
+                    <a href="#features" class="btn btn-secondary">اكتشف المميزات</a>
+                </div>
+            </div>
+
+            <div class="visual reveal" aria-label="تصميم بصري متحرك">
+                <div class="orbital"></div>
+                <div class="orbital two"></div>
+
+                <div class="core">
+                    <span>V</span>
+                </div>
+
+                <div class="floating-card card-one">
+                    <span class="icon">⚡</span>
+                    <div>
+                        <strong>أداء سريع</strong>
+                        <small>تجربة سلسة ومميزة</small>
+                    </div>
+                </div>
+
+                <div class="floating-card card-two">
+                    <span class="icon">✦</span>
+                    <div>
+                        <strong>تصميم مستقبلي</strong>
+                        <small>تفاصيل تصنع الفرق</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container reveal" id="about">
+            <div class="section-heading">
+                <span class="eyebrow">WHO WE ARE</span>
+                <h2>مش مجرد موقع... <span class="gradient-text">دي تجربة.</span></h2>
+                <p>
+                    VELTRIX مساحة تجمع بين الأفكار والتصميم والتكنولوجيا،
+                    بواجهة عصرية هدفها تقديم تجربة واضحة وممتعة لكل مستخدم.
+                </p>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <h3>01</h3>
+                    <p>فكرة مختلفة</p>
+                </div>
+                <div class="stat">
+                    <h3>∞</h3>
+                    <p>إمكانيات للإبداع</p>
+                </div>
+                <div class="stat">
+                    <h3>24/7</h3>
+                    <p>الموقع متاح للتصفح</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container" id="features">
+            <div class="section-heading reveal">
+                <span class="eyebrow">WHY VELTRIX</span>
+                <h2>ليه تختار <span class="gradient-text">VELTRIX؟</span></h2>
+                <p>اهتمام بالتفاصيل، وتصميم يجمع بين الأناقة وسهولة الاستخدام.</p>
+            </div>
+
+            <div class="features">
+                <article class="feature reveal">
+                    <div class="feature-icon">🚀</div>
+                    <h3>سرعة وبساطة</h3>
+                    <p>واجهة منظمة تساعد المستخدم على الوصول للأقسام والمحتوى بسهولة.</p>
+                </article>
+
+                <article class="feature reveal">
+                    <div class="feature-icon">🎨</div>
+                    <h3>تصميم استثنائي</h3>
+                    <p>ألوان نيون وخلفيات داكنة وتفاصيل بصرية تمنح الموقع هوية مميزة.</p>
+                </article>
+
+                <article class="feature reveal">
+                    <div class="feature-icon">📱</div>
+                    <h3>على كل الأجهزة</h3>
+                    <p>تصميم متجاوب يناسب شاشات الكمبيوتر والتابلت والموبايل.</p>
+                </article>
+
+                <article class="feature reveal">
+                    <div class="feature-icon">✨</div>
+                    <h3>حركات تفاعلية</h3>
+                    <p>تأثيرات انتقال وظهور تدريجي تضيف حيوية للتجربة من غير مبالغة.</p>
+                </article>
+
+                <article class="feature reveal">
+                    <div class="feature-icon">🔎</div>
+                    <h3>بحث سريع</h3>
+                    <p>ابحث داخل بطاقات المشروعات واعثر على القسم الذي تريد استكشافه.</p>
+                </article>
+
+                <article class="feature reveal">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>تجربة واضحة</h3>
+                    <p>تنظيم بسيط للمحتوى وروابط واضحة تساعد على استخدام الموقع بسهولة.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="projects-section" id="projects">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <span class="eyebrow">EXPLORE MORE</span>
+                    <h2>اكتشف <span class="gradient-text">عالم VELTRIX</span></h2>
+                    <p>نماذج لأقسام يمكنك تخصيصها حسب فكرة مشروعك الحقيقي.</p>
+                </div>
+
+                <div class="project-tools reveal">
+                    <label class="search-box">
+                        <span>⌕</span>
+                        <input id="projectSearch" type="search" placeholder="ابحث عن مشروع..." aria-label="البحث عن مشروع">
+                    </label>
+                </div>
+
+                <div class="projects" id="projectList">
+                    <article class="project reveal" data-search="تقنية تكنولوجيا tech">
+                        <div class="project-art">⌘</div>
+                        <div class="project-body">
+                            <h3>TECH ZONE</h3>
+                            <p>مساحة لعشاق التكنولوجيا والأفكار الرقمية الحديثة.</p>
+                            <button class="project-link" data-message="قسم TECH ZONE تجريبي. أضف صفحة حقيقية لعرض محتواه.">
+                                اكتشف القسم ↗
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="project reveal" data-search="إبداع تصميم creative">
+                        <div class="project-art">✳</div>
+                        <div class="project-body">
+                            <h3>CREATIVE LAB</h3>
+                            <p>مساحة للأفكار الإبداعية والتصميمات والمشروعات الجديدة.</p>
+                            <button class="project-link" data-message="قسم CREATIVE LAB تجريبي. أضف صفحة حقيقية لعرض محتواه.">
+                                اكتشف القسم ↗
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="project reveal" data-search="مستقبل ابتكار future">
+                        <div class="project-art">◈</div>
+                        <div class="project-body">
+                            <h3>NEXT FUTURE</h3>
+                            <p>اكتشف أفكاراً مستقبلية ورؤية مختلفة للعالم الرقمي.</p>
+                            <button class="project-link" data-message="قسم NEXT FUTURE تجريبي. أضف صفحة حقيقية لعرض محتواه.">
+                                اكتشف القسم ↗
+                            </button>
+                        </div>
+                    </article>
+                </div>
+
+                <p id="noResults" style="display:none;text-align:center;color:#9ca3af;margin-top:25px;">
+                    مفيش نتائج مطابقة لبحثك.
+                </p>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="cta reveal">
+                <span class="eyebrow">YOUR NEXT MOVE</span>
+                <h2>مستعد تكتشف <span class="gradient-text">المستقبل؟</span></h2>
+                <p>ابدأ جولتك داخل VELTRIX واستكشف التصميم بنفسك.</p>
+                <a href="#home" class="btn btn-primary">ابدأ رحلتك الآن ↑</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-inner">
+            <a class="logo" href="#home">VEL<span>TRIX</span></a>
+
+            <p>© <span id="year"></span> VELTRIX. جميع الحقوق محفوظة.</p>
+
+            <div class="footer-links">
+                <a href="#home">الرئيسية</a>
+                <a href="#features">المميزات</a>
+                <a href="#projects">المشروعات</a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script>
+        // قائمة الموبايل
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        menuToggle.addEventListener("click", () => {
+            const isOpen = navLinks.classList.toggle("open");
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+            menuToggle.textContent = isOpen ? "✕" : "☰";
+        });
+
+        navLinks.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("open");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.textContent = "☰";
+            });
+        });
+
+        // رسالة تفاعلية
+        const toast = document.getElementById("toast");
+        let toastTimer;
+
+        function showToast(message) {
+            toast.textContent = message;
+            toast.classList.add("show");
+
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                toast.classList.remove("show");
+            }, 3500);
+        }
+
+        // أزرار بطاقات المشروعات
+        document.querySelectorAll("[data-message]").forEach(button => {
+            button.addEventListener("click", () => {
+                showToast(button.dataset.message);
+            });
+        });
+
+        // البحث داخل المشروعات
+        const searchInput = document.getElementById("projectSearch");
+        const projects = [...document.querySelectorAll(".project")];
+        const noResults = document.getElementById("noResults");
+
+        searchInput.addEventListener("input", () => {
+            const query = searchInput.value.trim().toLowerCase();
+            let visibleCount = 0;
+
+            projects.forEach(project => {
+                const content = (
+                    project.innerText + " " + project.dataset.search
+                ).toLowerCase();
+
+                const match = content.includes(query);
+                project.style.display = match ? "" : "none";
+
+                if (match) visibleCount++;
+            });
+
+            noResults.style.display = visibleCount === 0 ? "block" : "none";
+        });
+
+        // ظهور العناصر عند التمرير
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll(".reveal").forEach(element => {
+            observer.observe(element);
+        });
+
+        // السنة الحالية
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
+```
